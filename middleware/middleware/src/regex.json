@@ -1,0 +1,12 @@
+{
+    "intro":"[\\s\\n\\r]*contexte dans lequel l[’\\']*(?:examen|étude) est réalisée? ?:?[\\s\\n\\r]*",
+    "ctx":"[\\s\\n\\r]*technique de l\\'examen ?:?[\\s\\n\\r]*",
+    "tech":"[\\s\\n\\r]*[a-zA-Z0-9,/\\'\\-éà ]*(, on observe :|apporte les informations suivantes ?:?| (mettent|on met) en évidence :)[\\s\\n\\r]*",
+    "obs":"[\\s\\n\\r]*(en )*conclusion ?:?[\\s\\n\\r]*",
+    "ccl":"[\\s\\n\\r]*$",
+    "split_words": "(\\w+(-\\w+)*)",
+    "suvmax":"\\s*s\\s*u\\s*v(?:\\s*m\\s*a\\s*x)*\\s*=*à*\\s*([0-9,]+)\\s*(?:v\\s*e\\s*r\\s*s\\s*u\\s*s|v\\s*s)*\\s*([0-9,]+)*",
+    "medobj_size":"([0-9,]+)\\s*(?:x\\s*([0-9,]+)\\s*)*mm",
+    "gender":"([a-z\\.]+)\\sxxxx\\sxxxx",
+    "age":"xxxx\\s\\(([0-9])+\\sans*\\)"
+}

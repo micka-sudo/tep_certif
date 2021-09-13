@@ -1,0 +1,45 @@
+version: '3.8'
+
+services: 
+    web:
+        build: ./middleware
+        expose: 
+            - 5000
+        ports: 
+            - 5000:5000 
+        volumes: 
+            - ./middleware:/usr/src/middleware
+        env_file: .env
+        networks:
+            network-backend:
+                ipv4_address: 172.19.0.5
+        external_links:
+            - redis
+        depends_on:
+            - redis
+    
+    worker:
+        build: ./middleware
+        command: python3 redis_app.py
+        volumes:
+            - ./middleware:/usr/src/middleware
+        env_file: .env
+        external_links:
+            - redis
+        depends_on:
+            - web
+            - redis
+        networks:
+            network-backend:
+                ipv4_address: 172.19.0.6
+
+    redis:
+        image: redis:6-alpine
+        networks:
+            network-backend:
+                ipv4_address: 172.19.0.7
+        
+networks:
+    network-backend:
+        name: platform_network-backend
+        external: true
